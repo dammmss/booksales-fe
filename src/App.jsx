@@ -17,6 +17,10 @@ import GenreCreate from "./pages/admin/genres/create";
 import AdminAuthors from "./pages/admin/authors";
 import AuthorCreate from "./pages/admin/authors/create";
 
+import EditGenre from "./pages/admin/genres/edit";
+import EditAuthor from "./pages/admin/authors/edit";
+
+
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
@@ -57,12 +61,14 @@ function App() {
               <Route path="genres">
                 <Route index element={<AdminGenres />} />
                 <Route path="create" element={<GenreCreate />} />
+                <Route path="edit/:id" element={<EditGenre />} />
               </Route>
 
               {/* AUTHORS */}
               <Route path="authors">
                 <Route index element={<AdminAuthors />} />
                 <Route path="create" element={<AuthorCreate />} />
+                <Route path="edit/:id" element={<EditAuthor />} />
               </Route>
             </Route>
           </Route>
