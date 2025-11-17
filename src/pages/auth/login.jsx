@@ -15,15 +15,22 @@ export default function Login() {
         email,
         password,
       });
+
       console.log("LOGIN RESPONSE:", res.data);
 
-      // Simpan token
+      // Simpan token dan role
       localStorage.setItem("token", res.data.token);
+      localStorage.setItem("role", res.data.role);
 
       alert("Login berhasil!");
 
-      // Redirect ke halaman admin
-      navigate("/admin");
+      // Redirect berdasarkan role
+      if (res.data.role === "admin") {
+        navigate("/admin");
+      } else {
+        navigate("/"); // pelanggan diarahkan ke halaman public
+      }
+
     } catch (err) {
       alert("Email atau password salah!");
     }
@@ -93,6 +100,7 @@ export default function Login() {
                     Sign up
                   </a>
                 </p>
+
               </form>
             </div>
           </div>

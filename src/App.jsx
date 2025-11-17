@@ -22,6 +22,7 @@ import EditAuthor from "./pages/admin/authors/edit";
 
 
 import ProtectedRoute from "./components/ProtectedRoute";
+import Register from "./pages/auth/register";
 
 function App() {
   return (
@@ -37,13 +38,13 @@ function App() {
 
             {/* AUTH */}
             <Route path="login" element={<Login />} />
-            <Route path="register" element={<Books />} />
+            <Route path="register" element={<Register />} />
 
             {/* ADMIN */}
             <Route
               path="admin"
               element={
-                <ProtectedRoute>
+                <ProtectedRoute allowedRoles={["admin"]}> 
                   <AdminLayout />
                 </ProtectedRoute>
               }
